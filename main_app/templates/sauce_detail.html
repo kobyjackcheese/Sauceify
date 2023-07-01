@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 <div class="detail__img">
     <img src="{{sauce.img}}" alt="{{sauce.name}}" />
@@ -22,7 +22,35 @@
     <div class="detail__about">
         <h4 class="title is-4">About</h4>
         <p>{{sauce.description}}</p>
+        <br>
+        <br>
     </div>
+</div>
+<div class="food_container">
+    <!-- inside container -->
+    <div class="detail__songs mb-5">
+        <h4 class="title is-3">What goes well with {{sauce.name}}?</h4>
+
+
+        {% for food in sauce.foods.all %}
+        <div class="song">
+            <span>{{forloop.counter}}</span>
+
+            <span><b>{{food.name}}</b></span>
+
+            <img src="{{food.img}}">
+        </div>
+
+        {% empty %}
+        <article class="message">
+            <div class="message-header">
+                <p>No Foods Available</p>
+            </div>
+        </article>
+
+        {% endfor %}
+    </div>
+    <!--  above about section  -->
 </div>
 
 {% endblock %}

@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.views import View 
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from .models import Sauce
+from .models import Sauce, Food
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
+
 
 
 # Create your views here.
@@ -30,6 +31,11 @@ class SauceList(TemplateView):
         context["sauces"] = Sauce.objects.all()
         return context
     
+class SauceDetail(DetailView):
+    model = Sauce
+    template_name = "sauce_detail.html"
+
+    
 class SauceCreate(CreateView):
     model = Sauce
     fields = ['name', 'img', 'description']
@@ -37,9 +43,6 @@ class SauceCreate(CreateView):
     def get_success_url(self):
         return reverse('sauce_detail', kwargs={'pk': self.object.pk})
 
-class SauceDetail(DetailView):
-    model = Sauce
-    template_name = "sauce_detail.html"
     
 class SauceUpdate(UpdateView):
     model = Sauce
