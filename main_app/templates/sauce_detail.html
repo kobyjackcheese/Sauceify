@@ -33,14 +33,10 @@
 
 
         {% for food in sauce.foods.all %}
-        <div class="song">
+        <div>
             <span>{{forloop.counter}}</span>
-
             <span><b>{{food.name}}</b></span>
-
-            <img src="{{food.img}}">
         </div>
-
         {% empty %}
         <article class="message">
             <div class="message-header">
@@ -50,7 +46,32 @@
 
         {% endfor %}
     </div>
-    <!--  above about section  -->
+    <form class="mb-5" action="{% url 'food_create' sauce.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="name"
+                    placeholder="Food Name"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="img"
+                    placeholder="Image of Food"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input class="button is-primary" type="submit" value="Add Food" />
+            </div>
+        </div>
+    </form>
 </div>
 
 {% endblock %}

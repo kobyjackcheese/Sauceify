@@ -10,4 +10,6 @@ urlpatterns = [
     path('sauces/<int:pk>/', views.SauceDetail.as_view(), name="sauce_detail"),
     path('sauces/<int:pk>/update',views.SauceUpdate.as_view(), name="sauce_update"),
     path('sauces/<int:pk>/delete',views.SauceDelete.as_view(), name="sauce_delete"),
+    path('sauces/<int:pk>/foods/new/', views.FoodCreate.as_view(), name="food_create"),
+    
 ]

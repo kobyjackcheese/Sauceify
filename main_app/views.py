@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View 
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
@@ -56,3 +56,11 @@ class SauceDelete(DeleteView):
     template_name = "sauce_delete_confirmation.html"
     success_url = "/sauces/"
 
+class FoodCreate(View):
+
+    def post(self, request, pk):
+        name = request.POST.get("name")
+        img = request.POST.get("img")
+        sauce = Sauce.objects.get(pk=pk)
+        Food.objects.create(name=name, img=img, sauce=sauce)
+        return redirect('sauce_detail', pk=pk)
