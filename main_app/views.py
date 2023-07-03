@@ -60,7 +60,6 @@ class FoodCreate(View):
 
     def post(self, request, pk):
         name = request.POST.get("name")
-        img = request.POST.get("img")
         sauce = Sauce.objects.get(pk=pk)
-        Food.objects.create(name=name, img=img, sauce=sauce)
+        Food.objects.create(name=name, sauce=sauce)
         return redirect('sauce_detail', pk=pk)

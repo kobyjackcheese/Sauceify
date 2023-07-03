@@ -20,7 +20,7 @@ class Sauce(models.Model):
 class Food(models.Model):
 
     name = models.CharField(max_length=150)
-    img = models.CharField(max_length=500)
+    # img = models.CharField(max_length=500)
     sauce = models.ForeignKey(Sauce, on_delete=models.CASCADE, related_name="foods")
 
     def __str__(self):
