@@ -7,7 +7,7 @@ authors = ['me']
 [tool.poetry.dependencies]
 python = '>=3.8,<4.0'
 django = '^4.2.3'
-environ = '^0.1.0'
+environ = '*'
 
 [build-system]
 requires = ['poetry-core~=1.0']
