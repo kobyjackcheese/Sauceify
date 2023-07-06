@@ -1,18 +1,18 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: sauceify
+    databaseName: sauceify
+    user: sauceify
 
 services:
   - type: web
-    name: mysite
+    name: sauceify
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn mysite.wsgi:application"
+    startCommand: "gunicorn sauceify.wsgi:application"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: sauceify
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
