@@ -2,6 +2,7 @@
 name = 'Sauceify'
 version = '1.2.3'
 description = 'sauce'
+authord = ['me']
 
 [tool.poetry.dependencies]
 python = '^3.6'
